@@ -1,5 +1,3 @@
-const numerosModel = require("./Models/Numeros.Models");
-
 const mongoose = require("mongoose");
 const express = require("express");
 const http = require("http");
@@ -15,24 +13,14 @@ const port = process.env.PORT || 3434;
 app.use(express.json());
 app.use(cors());
 app.use(express.static("Storage"));
-
-app.use("/api/numerosChuj", async (req, res) => {
-  try {
-    const datos = await numerosModel.find();
-    res.json({ datos });
-    // console.log({ datos });
-  } catch (error) {
-    console.error(error.message);
-    process.exit(1);
-  }
-});
+app.use("/api", routes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos" });
 });
 
 mongoose
-  .connect(process.env.ConnectionString, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUniFiedTopology: true,
   })
