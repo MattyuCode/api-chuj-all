@@ -36,7 +36,7 @@ async function connectToMongoDB() {
       useUnifiedTopology: true,
     });
 
-    const url = `conetado a mongo${connectionDB.connection.host} - en puerto ${connectionDB.connection.port}`;
+    const url = `conetado a MONGODB ${connectionDB.connection.host} - en puerto ${connectionDB.connection.port}`;
     console.log(url);
     return url;
   } catch (error) {

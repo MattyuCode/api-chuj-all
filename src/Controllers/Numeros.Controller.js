@@ -11,9 +11,14 @@ const getAll = async (req, res) => {
   }
 };
 
+//Metodo para Editar con ID
 const getById = async (req, res) => {
+  const { id } = req.params;
   try {
-    const datos = await numerosModel.find();
+    const datos = await numerosModel.findById(id);
+    if (!datos) {
+      return res.status(404).json({ error: "Datos no encontrado" });
+    }
     res.json({ datos });
     console.log({ datos });
   } catch (error) {
@@ -24,10 +29,49 @@ const getById = async (req, res) => {
 
 const createData = async (req, res) => {
   const { body } = req;
-  console.log(body);
-  const data = await numerosModel.create(body);
-  console.log(data);
-  res.json({ message: "Datos insertados correctamente", data });
+  try {
+    const data = await numerosModel.create(body);
+    res.json({ message: "Datos insertados correctamente", data });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
 
-module.exports = { getAll, getById, createData };
+//NOTE: PARA ACTUALIZAR UN DATO CON ID
+
+const UpdateById = async (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  try {
+    const datos = await numerosModel.findByIdAndUpdate(id, body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!datos) {
+      return res.status(404).json({ error: "Datos no encontrado" });
+    }
+    res.json({ message: "Datos actualizados correctamente", datos });
+    console.log({ datos });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Interno del servidor" });
+  }
+};
+
+//NOTE: ELIMINAR DATO CON ID
+const DeleteById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const datos = await numerosModel.findByIdAndDelete(id);
+    if (!datos) {
+      return res.status(404).json({ error: "Dato no encontrado" });
+    }
+    res.json({ message: "Dato eliminado correctamente", datos });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+module.exports = { getAll, getById, createData, UpdateById, DeleteById };
