@@ -1,10 +1,4 @@
-# NOta cuando se publica en RENDER se tiene que cambiar la version del mongoose
-
-Deploy NODEJS and MONGODB en RENDER
--- https://www.youtube.com/watch?v=A4gM8DqZNto
-
-* Version actual: "mongoose": "^7.4.0",
-* Version que tiene que  ir con render  "mongoose": "^6.10.1",
+# Nota cuando se publica en RENDER
 
 
 # para agregar en RENDER se necesita estos cambios en package.json
@@ -33,4 +27,12 @@ package-lock.json
 node_modules/
 
 ```
+
+###Deploy NODEJS and MONGODB en RENDER
+-- https://www.youtube.com/watch?v=A4gM8DqZNto
+
+###How to deploy MERN project (NodeJS, React) using render and netlify.
+-- https://www.youtube.com/watch?v=AjaGmTVBIfI&list=LLGUtcYm_3o56OwmYb59QZSQ&index=2
+
+  
   
