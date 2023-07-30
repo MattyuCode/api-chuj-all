@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const MyController = require("./../Controllers/MyController");
+const MyController = require("../Controllers/MyController");
 
-const numerosController = require("../Controllers/Numeros.Controller");
+const numerosController = require("../Controllers/numerosController");
 
 router.get("/datos", () => {
   MyController.obtenerDatos();

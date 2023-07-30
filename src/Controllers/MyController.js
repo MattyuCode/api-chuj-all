@@ -1,4 +1,4 @@
-const MyModel = require("../Models/MiModelo");
+const MyModel = require("../Models/noSQL/MiModelo");
 
 const MyController = {
   obtenerDatos: async (req, res) => {

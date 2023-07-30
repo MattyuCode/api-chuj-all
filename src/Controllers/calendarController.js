@@ -1,4 +1,10 @@
-const calendarStorage = require("../Models/calendarModel");
+//COMMENT: EL NORMAL 
+// const calendarStorage = require("../Models/noSQL/calendarModel");
+
+//FIXME: EL MODO DINAMICO CON LEIFER  https://youtu.be/xRXHQlqA3Ak
+const {calendarModel} = require("../Models");
+
+
 const PUBLIC_URL = process.env.PUBLIC_URL;
 
 let idCalendar = 1;
@@ -6,7 +12,7 @@ let idCalendar = 1;
 
 const getAll = async (req, res) => {
   try {
-    const datos = await calendarStorage.find();
+    const datos = await calendarModel.find();
     res.send({ datos });
   } catch (error) {
     console.error(error.message);
@@ -22,7 +28,7 @@ const uploadImages = async (req, res) => {
     url: `${PUBLIC_URL}/${file.filename}`,
   };
   try {
-    const data = await calendarStorage.create(fileData);
+    const data = await calendarModel.create(fileData);
     idCalendar++;
     console.log(file);
     res.json({ message: "Datos insertados correctamente", data });

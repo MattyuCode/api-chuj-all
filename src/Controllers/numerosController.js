@@ -1,4 +1,7 @@
-const numerosModel = require("../Models/Numeros.Models");
+//COMMENT: EL NORMAL 
+// const numerosModel = require("../Models/noSQL/numerosModel");
+//FIXME: EL MODO DINAMICO CON LEIFER  https://youtu.be/xRXHQlqA3Ak
+ const {numerosModel} = require("../Models");
 
 const getAll = async (req, res) => {
   try {

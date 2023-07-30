@@ -3,8 +3,14 @@ const express = require("express");
 const http = require("http");
 const env = require("dotenv").config();
 const cors = require("cors");
-const routes = require("./Routes/numerosChuj");
+
+//TODO: TODO ESTO ES PARA RUTAS NORMAL 
+// const routes = require("./Routes/numerosChuj");
 // const routes = require("./Routes/Storage");
+
+//MAT: ESTO ES LO QUE HACE LEIFER CON EL INDEX EN ROUTES DINAMICO
+const routes = require("./Routes");
+
 
 const app = express();
 const httpServer = http.createServer(app);
