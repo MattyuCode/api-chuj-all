@@ -5,6 +5,7 @@
 const { calendarModel } = require("../Models");
 
 let idCalendar = 1;
+const PUBLIC_URL = process.env.PUBLIC_URL;
 
 const getAll = async (req, res) => {
   try {
@@ -21,7 +22,8 @@ const uploadImages = async (req, res) => {
   const fileData = {
     idCalendar: idCalendar,
     filename: file.filename,
-    url: `/Storage/${file.filename}`,
+    // url: `/Storage/${file.filename}`,
+    url: `${PUBLIC_URL}/Storage/${file.filename}`,
   };
   try {
     const data = await calendarModel.create(fileData);
