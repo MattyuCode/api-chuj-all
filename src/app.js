@@ -18,8 +18,9 @@ const port = process.env.PORT || 3434;
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static("Storage"));
 app.use("/api", routes);
+
+app.use('/Storage', express.static("Storage"));
 
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenidos" });

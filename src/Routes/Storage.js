@@ -4,6 +4,7 @@ const router = express.Router();
 const uploadMiddleware = require("../Utilities/handleStorage");
 
 router.get("/", getAll);
-router.post("/", uploadMiddleware.single("myfile"), uploadImages);
+router.post("/", uploadMiddleware.single("file"), uploadImages);
 
 module.exports = router;
+    
