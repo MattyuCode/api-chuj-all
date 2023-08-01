@@ -6,8 +6,15 @@ const calendarStorage = mongoose.Schema(
       type: Number,
       required: true,
     },
+    name: {
+      type: String,
+      required: true,
+    },
     url: {
       type: String,
+    },
+    images: {
+      type: [String],
     },
     filename: {
       type: String,
