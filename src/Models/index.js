@@ -6,6 +6,7 @@ const modelos = {
   calendarModel: calendarModel,
   MiModelo: require("./noSQL/MiModelo"),
   numerosModel: numerosModel,
+  usersModel: require("./noSQL/usersModel"),
 };
 
 const Models = modelos;
