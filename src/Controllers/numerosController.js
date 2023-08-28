@@ -61,17 +61,16 @@ const createData = async (req, res) => {
         idNumeros++;
       }
 
-      const newNumeros = {
-        id_numeros: idNumeros,
-        ...body,
-      };
+      const newNumeros = { ...body, id_numeros: idNumeros };
 
       const data = await numerosModel.create(newNumeros);
       res.json({ message: "Datos insertados correctamente", data });
     } catch (error) {
       console.error(error.message);
       if (error.code === 11000) {
-        return res.status(400).json({ message: "Ya existe el nombre del número" });
+        return res
+          .status(400)
+          .json({ message: "Ya existe el nombre del número" });
       }
       res.status(500).json({ message: error.message + "Ocurio un error" });
     }

@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
 const createUser = async (req, res) => {
   const { body } = req;
 
-  if (!body.user || !body.password) {
+  if (!body.user || !body.email || !body.password) {
     return res.status(400).json({ message: "Faltan campos obligatorio" });
   } else {
     try {
@@ -42,12 +42,9 @@ const createUser = async (req, res) => {
         idUsers++;
       }
 
-      const newUser = {
-        id_users: idUsers,
-        ...body,
-      };
+      const newUser = { ...body, id_users: idUsers };
       const user = await usersModel.create(newUser);
-      res.json({ message: "Datos actualizados correctamente", user });
+      res.json({ message: "Datos Insertados correctamente", user });
       console.log({ user });
       //   idUsers++;
     } catch (error) {
@@ -63,3 +60,4 @@ const createUser = async (req, res) => {
 };
 
 module.exports = { createUser, getAll };
+ 

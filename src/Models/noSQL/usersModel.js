@@ -11,6 +11,10 @@ const users = mongoose.Schema(
       required: true,
       unique: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,
@@ -59,7 +63,6 @@ timestamps: Establece si se deben agregar automáticamente campos createdAt y up
 versionKey: Indica si se debe agregar automáticamente un campo para controlar la versión del documento.
 
 */
-
 
 /*
 Filtro y Orden con MONGODB
