@@ -53,5 +53,5 @@ connectToMongoDB();
 
 httpServer.listen(port, () => {
   console.log("Aplicación corriendo en el puerto:", `http://localhost:${port}`);
-  // console.log("Aplicación corriendo en el puerto:", `http://192.168.0.103:${port}`);
+  // console.log("Aplicación corriendo en el puerto:", `http://192.168.1.36:${port}`);
 });

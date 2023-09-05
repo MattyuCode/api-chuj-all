@@ -32,7 +32,7 @@ const registerCtrll = async (req, res) => {
       };
 
       res.json({ message: "Datos insertados correctamente", data });
-      console.log({ data });
+       console.log({ data });
     } catch (error) {
       console.log(error.message);
 
@@ -68,7 +68,7 @@ const loginCtrll = async (req, res) => {
     };
 
     res.json({ message: "Datos insertados correctamente", data });
-    console.log({ data });
+    // console.log({ data });
   } catch (error) {
     console.log("ENTRA AQUI ", error.message);
     res.status(500).json({ message: error.message + " Ocurio un error" });
