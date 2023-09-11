@@ -7,7 +7,7 @@ const connectToMongoDB = async () => {
       useUnifiedTopology: true,
     });
 
-    const url = `🤪👩‍💻 Conectado a MONGODB ${connectionDB.connection.host} - en puerto ${connectionDB.connection.port}`;
+    const url = `👨‍💻 Conectado a MONGODB ${connectionDB.connection.host} - en puerto ${connectionDB.connection.port}`;
     console.log(url);
   } catch (error) {
     console.log("Error al conectar a MongoDB", error);
