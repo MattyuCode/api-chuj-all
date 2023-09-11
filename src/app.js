@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 })
 .catch((err) => console.log("Error al conectar a MongoDB", err));*/
 
-connectToMongoDB().then(() => console.log("Connect to MongoDB"));
+connectToMongoDB().then();
 
 httpServer.listen(port, () => {
   console.log("Aplicación corriendo en el puerto:", `http://localhost:${port}`);
