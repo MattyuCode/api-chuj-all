@@ -9,6 +9,7 @@ const connectToMongoDB = async () => {
 
     const url = `👨‍💻 Conectado a MONGODB ${connectionDB.connection.host} - en puerto ${connectionDB.connection.port}`;
     console.log(url);
+    return url;
   } catch (error) {
     console.log("Error al conectar a MongoDB", error);
   }
