@@ -3,9 +3,7 @@ const express = require("express");
 const http = require("http");
 const env = require("dotenv").config();
 const cors = require("cors");
-const {
-  connectToMongoDB
-} = require("../src/Config/database");
+const { connectToMongoDB } = require("../src/Config/database");
 
 //TODO: TODO ESTO ES PARA RUTAS NORMAL
 // const routes = require("./Routes/numerosChuj");
@@ -19,20 +17,23 @@ const httpServer = http.createServer(app);
 const port = process.env.PORT || 3434;
 
 app.use(express.json());
-app.use(cors({
-  origin: true,
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 app.use("/api", routes);
 
 app.use("/Storage", express.static("Storage"));
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Bienvenidos"
+    message: "Bienvenidos",
   });
 });
 
+/*
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUniFiedTopology: true,
@@ -42,9 +43,9 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.log(url);
     // console.log("Conexion exitosa");
   })
-  .catch((err) => console.log("Error al conectar a MongoDB", err));
+  .catch((err) => console.log("Error al conectar a MongoDB", err));*/
 
-// connectToMongoDB().then();
+connectToMongoDB().then(() => console.log("Connected to MongoDB"));
 
 httpServer.listen(port, () => {
   console.log("Aplicación corriendo en el puerto:", `http://localhost:${port}`);
