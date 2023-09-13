@@ -48,6 +48,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 connectToMongoDB().then(() => {});
 
 httpServer.listen(port, () => {
-  console.log("Aplicación corriendo  sssssssssss en el puerto:", `http://localhost:${port}`);
+  console.log("Aplicación corriendo en el puerto:", `http://localhost:${port}`);
   // console.log("Aplicación corriendo en el puerto:", `http://192.168.1.36:${port}`);
 });
