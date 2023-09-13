@@ -18,7 +18,7 @@ const port = process.env.PORT || 3434;
 
 app.use(express.json());
 app.use(
-  cors({
+  cors({   
     origin: true,
     credentials: true,
   })
