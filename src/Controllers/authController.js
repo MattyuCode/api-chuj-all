@@ -65,11 +65,6 @@ const loginCtrll = async (req, res) => {
     }
     */
 
-    const dataPass = await usersModel.findOne({ user: body.password });
-    if (!dataPass) {
-      return res.status(401).json({ message: "La contraseña es invalida" });
-    }
-
     const data = {
       token: await tokenSign(dataUser),
       user: dataUser,
