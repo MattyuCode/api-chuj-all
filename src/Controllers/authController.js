@@ -32,7 +32,7 @@ const registerCtrll = async (req, res) => {
       };
 
       res.json({ message: "Datos insertados correctamente", data });
-       console.log({ data });
+      console.log({ data });
     } catch (error) {
       console.log(error.message);
 
@@ -57,11 +57,19 @@ const loginCtrll = async (req, res) => {
       return res.status(404).json({ message: "El usuario no existe" });
     }
 
-    const hasPassword = dataUser.password;
+    /*  const hasPassword = dataUser.password;
+    //NOTE: COMPARANDO LA CONTRSEÑA ENSCRIPTADA CON LA QUE ESCRIBIO EL USUARIO
     const check = await compare(body.password, hasPassword);
-    if (!check) {
-      return res.status(401).json({ message: "La contraseña es invalido" });
+     if (!check) {
+      return res.status(401).json({ message: "La contraseña es invalida" });
     }
+    */
+
+    const dataPass = await usersModel.findOne({ user: body.password });
+    if (!dataPass) {
+      return res.status(401).json({ message: "La contraseña es invalida" });
+    }
+
     const data = {
       token: await tokenSign(dataUser),
       user: dataUser,
