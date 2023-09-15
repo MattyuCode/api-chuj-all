@@ -9,9 +9,7 @@ const PUBLIC_URL = process.env.PUBLIC_URL;
 const getAll = async (req, res) => {
   try {
     const datos = await calendarModel.find();
-    res.send({
-      datos,
-    });
+    res.send({ datos });
   } catch (error) {
     console.error(error.message);
     process.exit(1);

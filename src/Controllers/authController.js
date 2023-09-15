@@ -57,7 +57,8 @@ const loginCtrll = async (req, res) => {
       return res.status(404).json({ message: "El usuario no existe" });
     }
 
-    /*  const hasPassword = dataUser.password;
+    /*
+    const hasPassword = dataUser.password;
     //NOTE: COMPARANDO LA CONTRSEÑA ENSCRIPTADA CON LA QUE ESCRIBIO EL USUARIO
     const check = await compare(body.password, hasPassword);
      if (!check) {

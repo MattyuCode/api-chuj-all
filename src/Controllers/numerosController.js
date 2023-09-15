@@ -50,7 +50,7 @@ const createData = async (req, res) => {
       //   ...body,
       // };
 
-      //COMMENT: OTRO PASO
+      //COMMENT: OTRO PAS POR SI EL NUMERO EXISTE SOLO CONTINUE CON EL SIGUIENTE DEL ID
       const existingNumbers = await numerosModel
         .find({}, { id_numeros: 1 })
         .sort({ id_numeros: 1 });
