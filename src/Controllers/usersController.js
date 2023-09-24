@@ -71,7 +71,7 @@ const getUsersByUsers = async (req, res) => {
         .status(404)
         .json({ error: "Usuario no encontrado o no esta registrado " });
     }
-    // console.log({ datosUser });
+    //console.log({ datosUser });
     res.json({ datosUser });
   } catch (error) {
     console.error(error.message);
