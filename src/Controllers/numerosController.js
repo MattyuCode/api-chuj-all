@@ -56,14 +56,14 @@ const createData = async (req, res) => {
         .sort({ id_numeros: 1 });
       const existingId = existingNumbers.map((number) => number.id_numeros);
 
-      let idNumeros = 1;
-      while (existingId.includes(idNumeros)) {
-        idNumeros++;
+      let id_numeros = 1;
+      while (existingId.includes(id_numeros)) {
+        id_numeros++;
       }
 
-      const newNumeros = { ...body, id_numeros: idNumeros };
+      const newInsert = { ...body, id_numeros };
 
-      const data = await numerosModel.create(newNumeros);
+      const data = await numerosModel.create(newInsert);
       res.json({ message: "Datos insertados correctamente", data });
     } catch (error) {
       console.error(error.message);

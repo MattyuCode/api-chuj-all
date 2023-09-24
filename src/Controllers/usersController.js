@@ -59,5 +59,25 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getAll };
- 
+
+//NOTE: Buscar usuario por users
+const getUsersByUsers = async (req, res) => {
+  const { user } = req.params;
+
+  try {
+    const datosUser = await usersModel.findOne({user: user});
+    // const datosUser = await usersModel.findOne({ user });
+    if (!datosUser) {
+      res
+        .status(404)
+        .json({ error: "Usuario no encontrado o no esta registrado " });
+    }
+    console.log({ datosUser });
+    res.json({ datosUser });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Error al buscar usuario" });
+  }
+};
+
+module.exports = { createUser, getAll, getUsersByUsers };
