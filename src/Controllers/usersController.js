@@ -65,10 +65,9 @@ const getUsersByUsers = async (req, res) => {
   const { user } = req.params;
 
   try {
-    const datosUser = await usersModel.findOne({user: user});
-    // const datosUser = await usersModel.findOne({ user });
+    const datosUser = await usersModel.findOne({ user });
     if (!datosUser) {
-      res
+     return res
         .status(404)
         .json({ error: "Usuario no encontrado o no esta registrado " });
     }
