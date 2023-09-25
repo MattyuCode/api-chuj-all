@@ -59,7 +59,6 @@ const createUser = async (req, res) => {
   }
 };
 
-
 //NOTE: Buscar usuario por users
 const getUsersByUsers = async (req, res) => {
   const { user } = req.params;
@@ -67,7 +66,7 @@ const getUsersByUsers = async (req, res) => {
   try {
     const datosUser = await usersModel.findOne({ user });
     if (!datosUser) {
-     return res
+      return res
         .status(404)
         .json({ error: "Usuario no encontrado o no esta registrado " });
     }
@@ -79,4 +78,19 @@ const getUsersByUsers = async (req, res) => {
   }
 };
 
-module.exports = { createUser, getAll, getUsersByUsers };
+const DeleteUserById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await usersModel.findByIdAndDelete(id);
+    if (!data) {
+      return res.status(404).json({ error: "Dato no encontrado" });
+    }
+    res.json({ message: "Dato eliminado correctamente", data });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+module.exports = { createUser, getAll, getUsersByUsers, DeleteUserById };
