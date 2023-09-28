@@ -1,5 +1,6 @@
 const { diccionarioModel } = require("../Models");
 
+//NOTE: GET
 const getAll = async (req, res) => {
   try {
     const data = await diccionarioModel.find();
@@ -10,6 +11,7 @@ const getAll = async (req, res) => {
   }
 };
 
+//NOTE: POST
 const createDiccionary = async (req, res) => {
   try {
     const { body } = req;
@@ -39,4 +41,24 @@ const createDiccionary = async (req, res) => {
   }
 };
 
-module.exports = { getAll, createDiccionary };
+//NOTE: PUT
+const UpdateById = async (req, res) => {
+  const { id } = req.params;
+  const { body } = req;
+  try {
+    const datos = await diccionarioModel.findByIdAndUpdate(id, body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!datos) {
+      return res.status(404).json({ error: "No se encontraron los datos" });
+    }
+
+    res.json({ message: "Datos Actualizado correctamente", datos });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+module.exports = { getAll, createDiccionary, UpdateById };

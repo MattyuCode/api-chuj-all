@@ -45,7 +45,7 @@ const createUser = async (req, res) => {
       const newUser = { ...body, id_users: idUsers };
       const user = await usersModel.create(newUser);
       res.json({ message: "Datos Insertados correctamente", user });
-      console.log({ user });
+      // console.log({ user });
       //   idUsers++;
     } catch (error) {
       console.log(error.message);
