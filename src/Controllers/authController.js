@@ -42,7 +42,7 @@ const registerCtrll = async (req, res) => {
       res.status(500).json({ message: error.message + "Ocurio un error" });
     }
   }
-};
+}; 
 
 const loginCtrll = async (req, res) => {
   const { body } = req;

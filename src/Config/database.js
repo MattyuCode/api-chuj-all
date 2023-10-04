@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+//NOTE: TO RETRIEVE DATA IN THE MAIN MONGODB
 const connectToMongoDB = async () => {
   try {
     const connectionDB = await mongoose.connect(process.env.MONGODB_URI, {
@@ -15,4 +16,10 @@ const connectToMongoDB = async () => {
   }
 };
 
-module.exports = { connectToMongoDB };
+
+//NOTE: to register user in the other MONGODB
+const MongoDBCreateUser = mongoose.createConnection(process.env.MONGODB_URI2, {
+  useNewUrlParser: true,
+});
+
+module.exports = { connectToMongoDB, MongoDBCreateUser };

@@ -30,7 +30,7 @@ const createUser = async (req, res) => {
         id_users: nextIdUser,
         ...body,
       };*/
-
+ 
       //NOTE: ESTE OTRO FUNCIONA CUANDO SE ELIMINA UN NUMERO SE CREA EL NUMERO FALTA Y SI ESTA TODO COMPLETO CREA EL NUMERO SIGUIENTE
       const existingUsers = await usersModel
         .find({}, { id_users: 1 })
