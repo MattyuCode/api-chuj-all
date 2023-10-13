@@ -8,7 +8,8 @@ const modelos = {
   MiModelo: require("./noSQL/MiModelo"),
   numerosModel: numerosModel,
   usersModel: require("./noSQL/usersModel"),
-  diccionarioModel: diccionarioModel
+  palabraModel: require("./noSQL/palabraModel"),
+  diccionarioModel: diccionarioModel,
 };
 
 const Models = modelos;
