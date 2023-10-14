@@ -58,7 +58,7 @@ const loginCtrll = async (req, res) => {
       }
 
       if (dataUser.password !== body.password) {
-        return res.status(401).json({ message: "Contraseña incorrectas" });
+        return res.status(401).json({ message: "Contraseña incorrecta" });
       }
 
       /*
