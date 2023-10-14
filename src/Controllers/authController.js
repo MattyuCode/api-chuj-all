@@ -42,22 +42,26 @@ const registerCtrll = async (req, res) => {
       res.status(500).json({ message: error.message + "Ocurio un error" });
     }
   }
-}; 
+};
 
 const loginCtrll = async (req, res) => {
   const { body } = req;
 
-  //   if (!body.user || !body.password) {
-  //     return res.status(400).json({ message: "Faltan campos obligatorio" });
-  //   } else {
-  try {
-    const dataUser = await usersModel.findOne({ user: body.user });
-    // console.log("---->", dataUser);
-    if (!dataUser) {
-      return res.status(404).json({ message: "El usuario no existe" });
-    }
+  if (!body.user || !body.password) {
+    return res.status(400).json({ message: "Faltan campos obligatorio" });
+  } else {
+    try {
+      const dataUser = await usersModel.findOne({ user: body.user });
+      // console.log("---->", dataUser);
+      if (!dataUser) {
+        return res.status(404).json({ message: "El usuario no existe" });
+      }
 
-    /*
+      if (dataUser.password !== body.password) {
+        return res.status(401).json({ message: "Contraseña incorrectas" });
+      }
+
+      /*
     const hasPassword = dataUser.password;
     //NOTE: COMPARANDO LA CONTRSEÑA ENSCRIPTADA CON LA QUE ESCRIBIO EL USUARIO
     const check = await compare(body.password, hasPassword);
@@ -66,18 +70,18 @@ const loginCtrll = async (req, res) => {
     }
     */
 
-    const data = {
-      token: await tokenSign(dataUser),
-      user: dataUser,
-    };
+      const data = {
+        token: await tokenSign(dataUser),
+        user: dataUser,
+      };
 
-    res.json({ message: "Datos insertados correctamente", data });
-    // console.log({ data });
-  } catch (error) {
-    console.log("ENTRA AQUI ", error.message);
-    res.status(500).json({ message: error.message + " Ocurio un error" });
+      res.json({ message: "Datos insertados correctamente", data });
+      // console.log({ data });
+    } catch (error) {
+      console.log("ENTRA AQUI ", error.message);
+      res.status(500).json({ message: error.message + " Ocurio un error" });
+    }
   }
-  //   }
 };
 
 module.exports = { registerCtrll, loginCtrll };
