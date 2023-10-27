@@ -10,6 +10,7 @@ const modelos = {
   usersModel: require("./noSQL/usersModel"),
   palabraModel: require("./noSQL/palabraModel"),
   diccionarioModel: diccionarioModel,
+  nahualModel: require("./noSQL/nahualModel"),
 };
 
 const Models = modelos;
