@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { MongoDBCreateUser } = require("../../Config/database");
 
 const users = mongoose.Schema(
-  {
+  { 
     id_users: {
       type: Number,
       required: true,
